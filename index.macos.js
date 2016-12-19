@@ -1,7 +1,3 @@
-/**
- * Sample React Native macOS App
- * https://github.com/ptmt/react-native-macos
- */
  import React,{Component} from 'react';
  import ReactNative from 'react-native-macos';
  const {
@@ -35,8 +31,8 @@ export default class myFirstDesktopApp extends Component {
       onPanResponderRelease: this._handlePanResponderEnd,
       onPanResponderTerminate: this._handlePanResponderEnd,
     });
-    this._previousLeft = 20;
-    this._previousTop = 84;
+    //this._previousLeft = 20;
+    //this._previousTop = 84;
     this._circleStyles = {
       style: {
         left: this._previousLeft,
@@ -53,6 +49,7 @@ export default class myFirstDesktopApp extends Component {
     render() {
     return (
       <View style={styles.container}>
+        <View style={styles.circle2}/>
         <View style={styles.circle}
           ref={(circle) => {
             this.circle = circle;
@@ -89,7 +86,7 @@ export default class myFirstDesktopApp extends Component {
     this._highlight();
   }
 
-    _handlePanResponderMove = (e, gestureState) => {
+  _handlePanResponderMove = (e, gestureState) => {
     this._circleStyles.style.left = this._previousLeft + gestureState.dx;
     this._circleStyles.style.top = this._previousTop + gestureState.dy;
     this._updateNativeStyles();
@@ -110,6 +107,14 @@ var styles = StyleSheet.create({
     position: 'absolute',
     left: 0,
     top: 0,
+  },
+  circle2: {
+    width: CIRCLE_SIZE,
+    height: CIRCLE_SIZE,
+    position: 'absolute',
+    left: 0,
+    top: 0,
+    backgroundColor:'coral'
   },
   container: {
     flex: 1,
